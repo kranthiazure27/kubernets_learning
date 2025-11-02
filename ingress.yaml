@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: app.test.com          # Hostname for your application
+      http:
+        paths:
+          - path: /api               # Example path for API
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp-service     # Another Service
+                port:
+                  number: 8000
+
+          - path: /api2               # Example path for API
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp-service     # Another Service
+                port:
+                  number: 8000
