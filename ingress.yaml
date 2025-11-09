@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: app-ingress
 spec:
+  tls:
+    - hosts:
+        - app.test.com
+      secretName: dev-tls-secret   # Reference to the TLS Secret
   ingressClassName: nginx
   rules:
     - host: app.test.com          # Hostname for your application
