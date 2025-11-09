@@ -20,3 +20,12 @@ kops update cluster mycluster.k8s.local --state s3://my-kranthi-storage --yes
 kops validate cluster mycluster.k8s.local --state s3://my-kranthi-storage
 
   
+#Command to create user and context in kubectl
+kubectl config set-credentials dev-user --token=<paste-token-here>
+
+kubectl config set-context dev-context \
+  --cluster=minikube \
+  --namespace=amc-namespace \
+  --user=dev-user
+
+kubectl config use-context dev-context
